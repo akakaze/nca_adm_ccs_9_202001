@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "ConfigDefaultSchema",
+  "description": "config的預設值，用於electron-store",
+  "type": "object",
+  "properties": {
+    "testString": {
+      "title": "測試 String",
+      "description": "測試絕對路徑",
+      "type": "string",
+      "default": "test:/test/test.test",
+      "pattern": "^([A-Za-z]+:(?:\/[^\\/*?\"<>|]+)*\/)([^\\/:*?\"<>|]+)$"
+    },
+    "testNumber": {
+      "title": "測試 Number",
+      "description": "測試0~25的5的倍數",
+      "type": "number",
+      "default": 5,
+      "maximum": 25,
+      "minimum": 0,
+      "multipleOf": 5
+    },
+    "testBoolean": {
+      "title": "測試 Boolean",
+      "description": "測試開關",
+      "type": "boolean",
+      "default": true
+    },
+    "testEnum": {
+      "title": "測試 Enum",
+      "description": "三個選項",
+      "type": "string",
+      "default": "AAA",
+      "enum": ["AAA", "BBB", "CCC"]
+    },
+    "testCheckbox": {
+      "title": "測試 Checkbox",
+      "description": "多選題",
+      "type": "array",
+      "default": ["DDD", "EEE"],
+      "items": {
+        "enum": ["DDD", "EEE", "FFF", "GGG", "HHH"]
+      }
+    }
+  }
+}
