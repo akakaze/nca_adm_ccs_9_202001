@@ -11,14 +11,20 @@
         <span class="h4 ml-1 align-middle font-weight-bold">內政部役政署</span>
       </b-navbar-brand>
       <b-navbar-nav>
+        <b-nav-item to="/create" link-classes="text-primary">
+          <font-awesome-icon :icon="['far', 'copy']" class="mr-1" />輸出模板
+        </b-nav-item>
+        <b-nav-item to="/edit" link-classes="text-primary">
+          <font-awesome-icon :icon="['far', 'edit']" class="mr-1" />正規處理
+        </b-nav-item>
+        <b-nav-item to="/config" link-classes="text-primary">
+          <font-awesome-icon icon="cog" class="mr-1" />設定
+        </b-nav-item>
         <b-nav-item to="/about" link-classes="text-primary">
           <font-awesome-icon
             :icon="['far', 'question-circle']"
             class="mr-1"
           />關於
-        </b-nav-item>
-        <b-nav-item to="/config" link-classes="text-primary">
-          <font-awesome-icon icon="cog" class="mr-1" />設定
         </b-nav-item>
       </b-navbar-nav>
     </b-navbar>
@@ -32,10 +38,14 @@
 import Vue from "vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
+import {
+  faQuestionCircle,
+  faCopy,
+  faEdit
+} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faQuestionCircle, faCog);
+library.add(faCopy, faQuestionCircle, faCog, faEdit);
 
 export default Vue.extend({
   components: {

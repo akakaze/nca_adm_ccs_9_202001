@@ -1,14 +1,26 @@
-import fs from "fs";
-import { JSONSchema } from "json-schema-typed";
+import Vue from "vue";
+import ElectronStore from "electron-store";
+import schema from "./schema";
 
-interface schema extends JSONSchema {
-  properties: { [key: string]: JSONSchema };
+declare module "vue/types/vue" {
+  interface Vue {
+    // Config injection
+    readonly $config: ElectronStore;
+  }
 }
 
-let configDefaultSchema = fs.readFileSync("src/config/default.json", {
-  encoding: "utf8"
+const PROP_NAME = "$config";
+
+const config = new ElectronStore({
+  schema: schema.properties
 });
 
-let schema: schema = JSON.parse(configDefaultSchema);
-
-export default schema;
+export default {
+  install() {
+    if (!Vue.prototype.hasOwnProperty(PROP_NAME)) {
+      Object.defineProperty(Vue.prototype, PROP_NAME, {
+        get: () => config
+      });
+    }
+  }
+};

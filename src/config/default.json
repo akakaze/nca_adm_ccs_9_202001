@@ -4,43 +4,26 @@
   "description": "config的預設值，用於electron-store",
   "type": "object",
   "properties": {
-    "testString": {
-      "title": "測試 String",
-      "description": "測試絕對路徑",
+    "createPath": {
+      "title": "輸出路徑",
+      "description": "輸出模板的絕對路徑，預設為 P:/提醒需要機關待退役男/",
       "type": "string",
-      "default": "test:/test/test.test",
-      "pattern": "^([A-Za-z]+:(?:\/[^\\/*?\"<>|]+)*\/)([^\\/:*?\"<>|]+)$"
+      "default": "P:/提醒需要機關待退役男/",
+      "pattern": "^[A-Za-z]+:(?:\/[^\\/*?\"<>|]+)*\/$"
     },
-    "testNumber": {
-      "title": "測試 Number",
-      "description": "測試0~25的5的倍數",
+    "monthInterval": {
+      "title": "月份間隔",
+      "description": "輸出月分與當月的間隔",
       "type": "number",
-      "default": 5,
-      "maximum": 25,
-      "minimum": 0,
-      "multipleOf": 5
+      "default": 3,
+      "multipleOf": 1
     },
-    "testBoolean": {
-      "title": "測試 Boolean",
-      "description": "測試開關",
-      "type": "boolean",
-      "default": true
-    },
-    "testEnum": {
-      "title": "測試 Enum",
-      "description": "三個選項",
+    "sortBy": {
+      "title": "排序依據",
+      "description": "需用機關的排序依據，使用關鍵字做排序，以|為間隔",
       "type": "string",
-      "default": "AAA",
-      "enum": ["AAA", "BBB", "CCC"]
-    },
-    "testCheckbox": {
-      "title": "測試 Checkbox",
-      "description": "多選題",
-      "type": "array",
-      "default": ["DDD", "EEE"],
-      "items": {
-        "enum": ["DDD", "EEE", "FFF", "GGG", "HHH"]
-      }
+      "default": "處|局|隊|司|署|委員會|部|院|省政府",
+      "pattern": "(?:[^|]+|)+[^|]+"
     }
   }
 }

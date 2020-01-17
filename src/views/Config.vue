@@ -57,17 +57,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import ElectronStore from "electron-store";
-import schema from "@/config/index";
-
-const config = new ElectronStore({ schema: schema.properties });
+import schema from "@/config/schema";
 
 export default Vue.extend({
-  data() {
-    return {
-      config: config
-    };
-  },
   computed: {
     configItems: () =>
       Object.keys(schema.properties).map(key => ({
@@ -77,10 +69,10 @@ export default Vue.extend({
   },
   methods: {
     getConfigValue(key: string | number) {
-      return this.config.get(key);
+      return this.$config.get(key);
     },
     updateConfig(key: string | number, value: any) {
-      this.config.set(key, value);
+      this.$config.set(key, value);
     }
   }
 });

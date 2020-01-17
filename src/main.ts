@@ -3,9 +3,11 @@ import BootstrapVue from "bootstrap-vue";
 import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
+import config from "@/config";
 import "@/scss/index.scss";
 
 Vue.use(BootstrapVue);
+Vue.use(config);
 
 Vue.config.productionTip = false;
 
